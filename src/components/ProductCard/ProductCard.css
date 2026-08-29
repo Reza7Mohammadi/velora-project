@@ -1,0 +1,405 @@
+.product-card {
+  position: relative;
+  min-width: 0;
+}
+
+
+/* ================================
+   IMAGE
+================================ */
+
+.product-image {
+  position: relative;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  background: #e8e2d6;
+}
+
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+
+  transition:
+    transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+
+.product-card:hover .product-image img {
+  transform: scale(1.05);
+}
+
+
+/* ================================
+   WISHLIST
+================================ */
+
+.product-wishlist {
+  position: absolute;
+
+  top: 16px;
+  right: 16px;
+
+  z-index: 5;
+
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  color: var(--color-olive);
+
+  background: rgba(246, 241, 231, 0.92);
+
+  border: 1px solid rgba(30, 42, 34, 0.12);
+
+  border-radius: 50%;
+
+  font-size: 1.65rem;
+  line-height: 42px;
+
+  cursor: pointer;
+
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+
+/* Hover */
+
+.product-wishlist:hover {
+  color: var(--color-cream);
+
+  background: var(--color-terracotta);
+
+  border-color: var(--color-terracotta);
+
+  transform: translateY(-3px) scale(1.05);
+}
+
+
+/* Active / liked */
+
+.product-wishlist.is-wishlist {
+  color: var(--color-terracotta);
+
+  background: var(--color-cream);
+
+  border-color: var(--color-terracotta);
+
+  font-size: 27px;
+}
+
+
+/* Active hover */
+
+.product-wishlist.is-wishlist:hover {
+  color: var(--color-cream);
+  background: var(--color-terracotta);
+  transform: translateY(-3px) scale(1.05);
+}
+
+
+/* ================================
+   VIEW
+================================ */
+
+.product-view {
+  position: absolute;
+
+  right: 18px;
+  bottom: 18px;
+
+  padding: 9px 13px;
+
+  color: var(--color-olive);
+
+  background: var(--color-cream);
+
+  font-size: 0.65rem;
+
+  font-weight: 600;
+
+  letter-spacing: 0.12em;
+
+  opacity: 0;
+
+  transform: translateY(10px);
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+
+.product-card:hover .product-view {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+
+/* ================================
+   INFO
+================================ */
+
+.product-info {
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: space-between;
+
+  gap: 15px;
+
+  padding: 18px 0 10px;
+}
+
+
+.product-details {
+  min-width: 0;
+}
+
+
+.product-category {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: var(--color-terracotta);
+
+  font-size: 0.6rem;
+
+  font-weight: 600;
+
+  letter-spacing: 0.15em;
+}
+
+
+.product-info h3 {
+  margin: 0;
+
+  color: var(--color-olive);
+
+  font-family: "Playfair Display", serif;
+
+  font-size: 1.05rem;
+
+  font-weight: 500;
+
+  line-height: 1.2;
+}
+
+
+.product-price {
+  flex-shrink: 0;
+
+  color: var(--color-olive);
+
+  font-size: 0.78rem;
+
+  font-weight: 600;
+}
+
+
+/* ================================
+   CART
+================================ */
+
+.product-add,
+.product-quantity {
+  width: 100%;
+  min-height: 48px;
+  margin-top: 5px;
+  box-sizing: border-box;
+}
+
+
+/* ================================
+   ADD TO BAG
+================================ */
+
+.product-add {
+  display: flex;
+  height: 50px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  color: var(--color-olive);
+  background-color: transparent;
+  border: 2px solid var(--color-olive);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  transition:
+    border-color 0.35s ease,
+    color 0.35s ease,
+    transform 0.35s ease;
+}
+
+
+.product-add span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  transition:
+    transform 0.35s ease;
+}
+
+
+/* Hover */
+
+.product-add:hover {
+  color: var(--color-terracotta);
+  border-color: var(--color-terracotta);
+  transform: translateY(-2px);
+}
+.product-add:hover span {
+  transform: translateX(8px);
+}
+
+
+/* Active */
+
+.product-add:active {
+  transform: translateY(0);
+}
+
+
+/* ================================
+   QUANTITY
+================================ */
+
+.product-quantity {
+  display: grid;
+  height: 50px;
+  grid-template-columns: 48px 1fr 48px;
+  align-items: stretch;
+  overflow: hidden;
+  color: var(--color-olive);
+  background-color: transparent;
+  border: 2px solid var(--color-olive);
+  transition:
+    border-color 0.35s ease,
+    transform 0.35s ease;
+}
+
+
+/* ================================
+   QUANTITY BUTTONS
+================================ */
+
+.quantity-delete,
+.quantity-plus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  color: var(--color-olive);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease;
+}
+
+
+/* Delete */
+
+.quantity-delete {
+  font-size: 1.35rem;
+  font-weight: 300;
+}
+
+
+/* Plus */
+
+.quantity-plus {
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+
+
+/* ================================
+   QUANTITY HOVER
+================================ */
+
+.quantity-delete:hover {
+  color: var(--color-cream);
+  background-color: var(--color-terracotta);
+}
+
+
+.quantity-plus:hover {
+  color: var(--color-cream);
+  background-color: var(--color-olive);
+}
+
+
+/* ================================
+   QUANTITY NUMBER
+================================ */
+
+.quantity-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-olive);
+  font-size: 0.8rem;
+  font-weight: 700;
+  border-left: 1px solid rgba(30, 42, 34, 0.15);
+  border-right: 1px solid rgba(30, 42, 34, 0.15);
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 600px) {
+
+  .product-info h3 {
+    font-size: 0.95rem;
+  }
+
+
+  .product-price {
+    font-size: 0.72rem;
+  }
+
+
+  .product-add {
+    min-height: 45px;
+
+    padding: 12px 14px;
+
+    font-size: 0.6rem;
+  }
+
+
+  .product-quantity {
+    min-height: 45px;
+  }
+
+
+  .quantity-delete,
+  .quantity-plus {
+    font-size: 1.1rem;
+  }
+
+}

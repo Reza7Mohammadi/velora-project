@@ -1,0 +1,638 @@
+/* ================================
+   COLLECTIONS
+================================ */
+
+.collections {
+  padding: 120px 5%;
+
+  background: var(--color-cream);
+
+  color: var(--color-olive);
+}
+
+
+/* ================================
+   HEADER
+================================ */
+
+.collections-header {
+  display: flex;
+
+  align-items: flex-end;
+
+  justify-content: space-between;
+
+  margin-bottom: 65px;
+}
+
+.collections-header span {
+  display: block;
+
+  margin-bottom: 18px;
+
+  color: var(--color-terracotta);
+
+  font-size: 0.65rem;
+
+  font-weight: 600;
+
+  letter-spacing: 0.2em;
+}
+
+.collections-header h1 {
+  margin: 0;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: clamp(3.5rem, 6vw, 6rem);
+
+  font-weight: 400;
+
+  line-height: 0.92;
+
+  letter-spacing: -0.04em;
+}
+
+.collections-header p {
+  margin: 0;
+
+  color: var(--color-sage);
+
+  font-size: 0.85rem;
+
+  line-height: 1.7;
+
+  text-align: right;
+}
+
+
+/* ================================
+   COLLECTION GRID
+================================ */
+
+.collections-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 28px;
+}
+
+
+/* ================================
+   COLLECTION CARD
+================================ */
+
+.collection-card {
+  position: relative;
+
+  display: block;
+
+  height: 540px;
+
+  overflow: hidden;
+
+  background: var(--color-olive);
+
+  border-radius: 15px;
+}
+
+
+/* ================================
+   IMAGE
+================================ */
+
+.collection-card img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition:
+    transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+
+/* ================================
+   OVERLAY
+================================ */
+
+.collection-card::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(30, 42, 34, 0.9),
+      rgba(30, 42, 34, 0.1) 70%
+    );
+
+  transition: background 0.5s ease;
+}
+
+
+/* ================================
+   CARD CONTENT
+================================ */
+
+.collection-card-overlay {
+  position: absolute;
+
+  z-index: 2;
+
+  inset: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: flex-end;
+
+  align-items: flex-start;
+
+  padding: 32px;
+
+  color: var(--color-cream);
+}
+
+.collection-card-overlay span {
+  margin-bottom: 10px;
+
+  color: var(--color-terracotta);
+
+  font-size: 0.68rem;
+
+  font-weight: 600;
+
+  letter-spacing: 0.18em;
+}
+
+.collection-card-overlay h2 {
+  margin: 0;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: clamp(2rem, 3vw, 3.3rem);
+
+  font-weight: 400;
+
+  letter-spacing: 0.02em;
+}
+
+
+/* ================================
+   EXPLORE
+================================ */
+
+.collection-card-overlay strong {
+  position: relative;
+
+  margin-top: 20px;
+
+  padding-bottom: 8px;
+
+  color: var(--color-cream);
+
+  font-size: 0.72rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.14em;
+
+  border-bottom: 2px solid var(--color-cream);
+
+  transition:
+    color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+
+/* ================================
+   CARD HOVER
+================================ */
+
+.collection-card:hover img {
+  transform: scale(1.06);
+}
+
+.collection-card:hover::after {
+  background:
+    linear-gradient(
+      to top,
+      rgba(30, 42, 34, 0.86),
+      rgba(30, 42, 34, 0.08) 70%
+    );
+}
+
+.collection-card:hover strong {
+  color: var(--color-terracotta);
+
+  border-color: var(--color-terracotta);
+
+  transform: translateX(10px);
+}
+
+
+/* ================================
+   SINGLE COLLECTION
+================================ */
+
+.collection-single {
+  background: var(--color-cream);
+
+  color: var(--color-olive);
+}
+
+
+/* ================================
+   COLLECTION HERO
+================================ */
+
+.collection-hero {
+  min-height: 500px;
+
+  display: grid;
+
+  grid-template-columns: 0.9fr 1.1fr;
+
+  gap: 0;
+
+  padding: 70px 5%;
+}
+
+
+/* ================================
+   HERO IMAGE
+================================ */
+
+.collection-hero-image {
+  height: 500px;
+
+  overflow: hidden;
+
+  background: var(--color-olive);
+
+  border-radius: 15px;
+}
+
+.collection-hero-image img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition: transform 0.8s ease;
+}
+
+.collection-hero-image:hover img {
+  transform: scale(1.04);
+}
+
+
+/* ================================
+   HERO CONTENT
+================================ */
+
+.collection-hero-content {
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: flex-start;
+
+  padding: 60px 10%;
+}
+
+.collection-hero-content > span {
+  margin-bottom: 18px;
+
+  color: var(--color-terracotta);
+
+  font-size: 0.68rem;
+
+  font-weight: 600;
+
+  letter-spacing: 0.2em;
+}
+
+.collection-hero-content h1 {
+  margin: 0;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: clamp(3rem, 5vw, 5rem);
+
+  font-weight: 400;
+
+  line-height: 0.95;
+
+  letter-spacing: -0.04em;
+}
+
+.collection-hero-content p {
+  max-width: 380px;
+
+  margin: 25px 0 32px;
+
+  color: var(--color-sage);
+
+  font-size: 0.88rem;
+
+  line-height: 1.8;
+}
+
+
+/* ================================
+   BACK TO COLLECTIONS
+================================ */
+
+.collection-hero-content a {
+  position: relative;
+
+  padding-bottom: 8px;
+
+  color: var(--color-olive);
+
+  font-size: 0.72rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.14em;
+
+  border-bottom: 2px solid var(--color-olive);
+
+  transition:
+    color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.collection-hero-content a:hover {
+  color: var(--color-terracotta);
+
+  border-color: var(--color-terracotta);
+
+  transform: translateX(-5px);
+}
+
+
+/* ================================
+   PRODUCTS SECTION
+================================ */
+
+.collection-products {
+  padding: 120px 5%;
+}
+
+
+/* ================================
+   PRODUCTS HEADER
+================================ */
+
+.collection-products-header {
+  display: flex;
+
+  align-items: flex-end;
+
+  justify-content: space-between;
+
+  margin-bottom: 50px;
+}
+
+.collection-products-header span {
+  display: block;
+
+  margin-bottom: 12px;
+
+  color: var(--color-terracotta);
+
+  font-size: 0.65rem;
+
+  font-weight: 600;
+
+  letter-spacing: 0.2em;
+}
+
+.collection-products-header h2 {
+  margin: 0;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: clamp(2.5rem, 4vw, 4rem);
+
+  font-weight: 400;
+
+  line-height: 1;
+}
+
+.collection-products-header p {
+  margin: 0;
+
+  color: var(--color-sage);
+
+  font-size: 0.82rem;
+
+  line-height: 1.7;
+
+  text-align: right;
+}
+
+
+/* ================================
+   PRODUCTS GRID
+================================ */
+
+.collection-products-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 28px;
+}
+
+
+/* ================================
+   NOT FOUND
+================================ */
+
+.collection-not-found {
+  min-height: 70vh;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 25px;
+
+  background: var(--color-cream);
+
+  color: var(--color-olive);
+
+  text-align: center;
+}
+
+.collection-not-found h1 {
+  margin: 0;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: clamp(2.5rem, 5vw, 5rem);
+
+  font-weight: 400;
+}
+
+.collection-not-found a {
+  color: var(--color-olive);
+
+  font-size: 0.72rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.14em;
+
+  border-bottom: 2px solid var(--color-olive);
+
+  padding-bottom: 8px;
+}
+
+
+/* ================================
+   TABLET
+================================ */
+
+@media (max-width: 900px) {
+
+  .collections {
+    padding: 100px 4%;
+  }
+
+  .collections-header {
+    display: block;
+  }
+
+  .collections-header p {
+    margin-top: 25px;
+
+    text-align: left;
+  }
+
+  .collections-grid {
+    gap: 20px;
+  }
+
+  .collection-card {
+    height: 450px;
+  }
+
+
+  /* COLLECTION HERO */
+
+  .collection-hero {
+    grid-template-columns: 1fr;
+
+    padding: 60px 4%;
+  }
+
+  .collection-hero-image {
+    height: 420px;
+  }
+
+  .collection-hero-content {
+    padding: 60px 4%;
+  }
+
+
+  .collection-products {
+    padding: 100px 4%;
+  }
+
+  .collection-products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 600px) {
+
+  .collections {
+    padding: 80px 22px;
+  }
+
+  .collections-header h1 {
+    font-size: 3.2rem;
+  }
+
+  .collections-grid {
+    grid-template-columns: 1fr;
+
+    gap: 14px;
+  }
+
+  .collection-card {
+    height: 430px;
+  }
+
+  .collection-card-overlay {
+    padding: 25px;
+  }
+
+
+  /* COLLECTION HERO */
+
+  .collection-hero {
+    padding: 40px 22px;
+  }
+
+  .collection-hero-image {
+    height: 360px;
+  }
+
+  .collection-hero-content {
+    padding: 55px 0 30px;
+  }
+
+  .collection-hero-content h1 {
+    font-size: 3.2rem;
+  }
+
+
+  .collection-products {
+    padding: 80px 22px;
+  }
+
+  .collection-products-header {
+    display: block;
+  }
+
+  .collection-products-header p {
+    margin-top: 20px;
+
+    text-align: left;
+  }
+
+  .collection-products-grid {
+    grid-template-columns: 1fr;
+
+    gap: 30px;
+  }
+}
+

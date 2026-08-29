@@ -1,0 +1,349 @@
+.categories {
+  padding: 130px 5%;
+  background: var(--color-cream);
+  color: var(--color-olive);
+}
+/* ================================
+   HEADER
+================================ */
+
+.categories-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+
+.categories-header span {
+  display: block;
+  margin-bottom: 18px;
+  color: var(--color-terracotta);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+}
+.categories-header h2 {
+  margin: 0;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(3rem, 5vw, 5.2rem);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+}
+.categories-header p {
+  margin: 0;
+  color: var(--color-sage);
+  font-size: 0.85rem;
+  line-height: 1.7;
+  text-align: right;
+}
+/* ================================
+   GRID
+================================ */
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 40px;
+}
+/* ================================
+   FIRST ROW
+   3 CATEGORIES
+================================ */
+.category-card:nth-child(1),
+.category-card:nth-child(2),
+.category-card:nth-child(3) {
+  grid-column: span 2;
+}
+
+
+/* ================================
+   SECOND ROW
+   2 CATEGORIES - CENTERED
+================================ */
+
+.category-card:nth-child(4) {
+  grid-column: 2 / span 2;
+}
+
+.category-card:nth-child(5) {
+  grid-column: 4 / span 2;
+}
+
+
+/* ================================
+   CARD
+================================ */
+
+.category-card {
+  position: relative;
+
+  display: block;
+
+  height: 430px;
+
+  overflow: hidden;
+
+  background: var(--color-olive);
+
+  border-radius: 15px;
+}
+
+
+/* ================================
+   IMAGE
+================================ */
+
+.category-card img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition:
+    transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+
+/* ================================
+   OVERLAY
+================================ */
+
+.category-card::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(30, 42, 34, 0.88),
+      rgba(30, 42, 34, 0.18) 70%
+    );
+
+  transition: background 0.5s ease;
+}
+
+
+/* ================================
+   CONTENT
+================================ */
+
+.category-overlay {
+  position: absolute;
+
+  z-index: 2;
+
+  inset: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: flex-end;
+
+  padding: 28px;
+
+  color: var(--color-cream);
+}
+
+.category-info span {
+  display: block;
+  margin-bottom: 9px;
+  color: var(--color-terracotta);
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+}
+
+.category-info h3 {
+  margin: 0;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: clamp(1.8rem, 2.5vw, 2.7rem);
+
+  font-weight: 400;
+
+  letter-spacing: 0.02em;
+}
+
+
+/* ================================
+   ARROW
+================================ */
+
+.category-arrow {
+  align-self: flex-start;
+
+  margin-top: 18px;
+
+  padding: 10px;
+
+  color: var(--color-cream);
+
+  font-size: 0.93rem;
+
+  font-weight: 900;
+
+  letter-spacing: 0.14em;
+
+  border-bottom: 2px solid var(--color-cream);
+
+  transition:
+    color 0.3s ease,
+    padding-left 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+
+/* ================================
+   HOVER
+================================ */
+
+.category-card:hover img {
+  transform: scale(1.06);
+}
+
+.category-card:hover::after {
+  background:
+    linear-gradient(
+      to top,
+      rgba(30, 42, 34, 0.85),
+      rgba(30, 42, 34, 0.12) 70%
+    );
+}
+
+.category-card:hover .category-arrow {
+  color: var(--color-terracotta);
+
+  padding-left: 18px;
+
+  border-color: var(--color-terracotta);
+
+  transform: translateX(10px);
+}
+
+
+/* ================================
+   FOOTER
+================================ */
+
+.categories-footer {
+  display: flex;
+
+  justify-content: center;
+
+  margin-top: 55px;
+}
+
+.categories-footer a {
+  position: relative;
+
+  padding: 10px;
+
+  color: var(--color-olive);
+
+  font-size: 0.88rem;
+
+  font-weight: bold;
+
+  letter-spacing: 0.16em;
+
+  border-bottom: 2px solid var(--color-olive);
+
+  transition:
+    color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.categories-footer a:hover {
+  color: var(--color-terracotta);
+
+  transform: translateX(10px);
+
+  border-bottom-color: var(--color-terracotta);
+}
+
+
+/* ================================
+   TABLET
+================================ */
+
+@media (max-width: 900px) {
+
+  .categories {
+    padding: 100px 4%;
+  }
+
+  .categories-header {
+    display: block;
+  }
+
+  .categories-header p {
+    margin-top: 25px;
+
+    text-align: left;
+  }
+
+  .categories-grid {
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 25px;
+  }
+
+  .category-card:nth-child(1),
+  .category-card:nth-child(2),
+  .category-card:nth-child(3),
+  .category-card:nth-child(4),
+  .category-card:nth-child(5) {
+    grid-column: span 1;
+  }
+
+  .category-card {
+    height: 430px;
+  }
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 600px) {
+
+  .categories {
+    padding: 80px 22px;
+  }
+
+  .categories-header h2 {
+    font-size: 3rem;
+  }
+
+  .categories-grid {
+    grid-template-columns: 1fr;
+
+    gap: 14px;
+  }
+
+  .category-card:nth-child(1),
+  .category-card:nth-child(2),
+  .category-card:nth-child(3),
+  .category-card:nth-child(4),
+  .category-card:nth-child(5) {
+    grid-column: span 1;
+  }
+
+  .category-card {
+    height: 430px;
+  }
+
+  .category-overlay {
+    padding: 25px;
+  }
+}

@@ -1,0 +1,253 @@
+.navbar {
+  width: 100%;
+  height: 86px;
+
+  padding: 0 5%;
+
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+
+  background: var(--color-olive);
+
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  border-bottom: 1px solid var(--border-light);
+}
+
+
+/* =================================
+   LOGO
+================================= */
+
+.navbar-logo {
+  justify-self: start;
+}
+
+.navbar-logo a {
+  position: relative;
+
+  display: inline-block;
+
+  color: var(--color-cream);
+
+  font-family: "Playfair Display", serif;
+
+  font-size: 1.55rem;
+  font-weight: 600;
+
+  letter-spacing: 0.14em;
+}
+
+.navbar-logo a::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: -6px;
+
+  width: 100%;
+  height: 2px;
+
+  background: var(--color-terracotta);
+
+  transform: scaleX(0);
+  transform-origin: right;
+
+  transition: transform 0.35s ease;
+}
+
+.navbar-logo a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+
+/* =================================
+   NAVIGATION
+================================= */
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.navbar-links a {
+  position: relative;
+
+  padding: 11px 18px;
+
+  color: var(--color-sage);
+
+  font-size: 0.72rem;
+  font-weight: 500;
+
+  letter-spacing: 0.12em;
+
+  border-radius: 4px;
+
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease;
+}
+
+
+/* Hover */
+
+.navbar-links a:hover {
+  color: var(--color-cream);
+
+  background: var(--color-olive-light);
+}
+
+
+/* Active */
+
+.navbar-links a.active {
+  color: var(--color-cream);
+}
+
+
+/* Active indicator */
+
+.navbar-links a.active::after {
+  content: "";
+
+  position: absolute;
+
+  left: 18px;
+  right: 18px;
+  bottom: 5px;
+
+  height: 2px;
+
+  background: var(--color-terracotta);
+}
+
+
+/* =================================
+   ACTIONS
+================================= */
+
+.navbar-actions {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navbar-actions a {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-cream);
+  border: 2px solid var(--border-light);
+  border-radius: 50%;
+  background: transparent;
+  font-size: 1.35rem;
+  font-weight: 600;  
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+
+/* Same hover language as navigation */
+.navbar-actions a.active {
+  color: var(--color-cream);
+  border: 2px solid var(--color-terracotta);
+}
+
+.navbar-actions  a:hover {
+  color: var(--color-olive);
+  background: var(--color-terracotta);
+  border-color: var(--color-terracotta);
+  transform: translateY(-2px);
+}
+
+
+/* =================================
+   MOBILE
+================================= */
+
+@media (max-width: 768px) {
+
+  .navbar {
+    height: 72px;
+
+    padding: 0 22px;
+
+    grid-template-columns: 1fr auto;
+  }
+
+  .navbar-links {
+    display: none;
+  }
+
+  .navbar-logo a {
+    font-size: 1.3rem;
+  }
+
+  .navbar-actions {
+    gap: 7px;
+  }
+
+  .navbar-actions a {
+    width: 37px;
+    height: 37px;
+  }
+}
+
+.navbar-cart {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--color-olive);
+
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.navbar-cart:hover {
+  color: var(--color-terracotta);
+
+  transform: translateY(-2px);
+}
+
+.cart-count {
+  position: absolute;
+
+  top: -9px;
+  right: -10px;
+
+  min-width: 16px;
+  height: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 3px;
+
+  color: var(--color-cream);
+
+  background: var(--color-terracotta);
+
+  border-radius: 50%;
+
+  font-size: 0.58rem;
+  font-weight: 700;
+  line-height: 1;
+}
