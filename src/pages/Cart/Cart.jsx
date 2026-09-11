@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
 import products from "../../data/products";
 import "./Cart.css";
+import { useSelector ,useDispatch } from "react-redux";
+import { removeFromCart,increaseQuantity,decreaseQuantity } from "../../features/cart/cartSlice";
 
 
-const Cart = ({
-  cart,
-  onIncreaseQuantity,
-  onDecreaseQuantity,
-  onRemoveFromCart,
-}) => {
+const Cart = () => {
+
+  const cart = useSelector(state=>state.cart.items);
+  const dispatch =useDispatch();
 
   /* =================================
      GET CART PRODUCTS
@@ -191,7 +191,7 @@ const Cart = ({
 
                     <button
                       onClick={() =>
-                        onDecreaseQuantity(product.id)
+                        dispatch(decreaseQuantity(product.id))
                       }
                       aria-label="Decrease quantity"
                     >
@@ -204,7 +204,7 @@ const Cart = ({
 
                     <button
                       onClick={() =>
-                        onIncreaseQuantity(product.id)
+                        dispatch(increaseQuantity(product.id))
                       }
                       aria-label="Increase quantity"
                     >
@@ -219,7 +219,7 @@ const Cart = ({
                   <button
                     className="cart-remove"
                     onClick={() =>
-                      onRemoveFromCart(product.id)
+                      dispatch(removeFromCart(product.id))
                     }
                   >
                     REMOVE

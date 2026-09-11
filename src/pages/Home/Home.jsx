@@ -5,19 +5,11 @@ import BrandStory from "../../components/BrandStory/BrandStory";
 import Newsletter from "../../components/Newsletter/Newsletter";
 import Footer from "../../components/Footer/Footer";
 
-const Home = ({wishlist,onWishlist,cart, onAddToCart, onIncreaseQuantity, onRemoveFromCart,onDecreaseQuantity}) => {
+const Home = () => {
   return (
     <>
       <Hero />
-      <Products 
-      wishlist={wishlist} 
-      onWishlist={onWishlist}
-      cart={cart}
-      onAddToCart={onAddToCart}
-      onIncreaseQuantity={onIncreaseQuantity}
-      onRemoveFromCart={onRemoveFromCart}
-      onDecreaseQuantity={onDecreaseQuantity}
-      />
+      <Products />
       <Categories /> 
       <BrandStory />
       <Newsletter />

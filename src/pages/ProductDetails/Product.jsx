@@ -1,12 +1,19 @@
 import { Link, useParams } from "react-router-dom";
 import products from "../../data/products";
 import "./Product.css";
+import { useSelector ,useDispatch } from "react-redux";
+import { addToCart,removeFromCart,increaseQuantity,decreaseQuantity } from "../../features/cart/cartSlice";
+import { handleWishlist } from "../../features/wishlist/wishlistSlice";
 
 
-const Product = ({wishlist,onWishlist,cart,onAddToCart, onIncreaseQuantity, onRemoveFromCart,onDecreaseQuantity}) => {
+const Product = () => {
+
+  const cart = useSelector(state=>state.cart.items);
+  const dispatch =useDispatch();
 
   const { id } = useParams();
 
+  const wishlist = useSelector(state=>state.wishlist);
 
   const product = products.find(
     (p) => p.id === Number(id)
@@ -27,7 +34,7 @@ const Product = ({wishlist,onWishlist,cart,onAddToCart, onIncreaseQuantity, onRe
     );
   }
 
-  let isWishlist= wishlist.includes(product.id)
+  const isWishlist= wishlist.includes(product.id);
 
 
 
@@ -85,24 +92,24 @@ const Product = ({wishlist,onWishlist,cart,onAddToCart, onIncreaseQuantity, onRe
 
             { /* cart */ }
              {!isInCart ? (
-                 <button className="product-ad" onClick={() => onAddToCart(product.id)} >
+                 <button className="product-ad" onClick={() => dispatch(addToCart(product))} >
                     ADD TO BAG 
                     <span>  +  </span>
                  </button>) : 
                  (
               <div className="product-quant">
                   {cartItem.quantity === 1 ? (
-                      <button className="quantity-del" onClick={() => onRemoveFromCart(product.id)} aria-label="Remove from bag" >
+                      <button className="quantity-del" onClick={() => dispatch(removeFromCart(product.id))} aria-label="Remove from bag" >
                         ×
                       </button>) : (
-                      <button className="quantity-del" onClick={() => onDecreaseQuantity(product.id)} aria-label="Decrease quantity" >
+                      <button className="quantity-del" onClick={() => dispatch(decreaseQuantity(product.id))} aria-label="Decrease quantity" >
                         −
                       </button>
                   )}
                   <span className="quantity-num">
                      {cartItem.quantity}
                   </span>
-                  <button  className="quantity-plu" onClick={() => onIncreaseQuantity(product.id)} aria-label="Increase quantity" >
+                  <button  className="quantity-plu" onClick={() => dispatch(increaseQuantity(product.id))} aria-label="Increase quantity" >
                      +
                   </button>
               </div>
@@ -112,7 +119,7 @@ const Product = ({wishlist,onWishlist,cart,onAddToCart, onIncreaseQuantity, onRe
 
               
               
-               <button className="wishlist-button"  onClick={()=>{onWishlist(product.id)}}>
+               <button className="wishlist-button"  onClick={()=>{dispatch(handleWishlist(product.id))}}>
                 {isWishlist ? "♥" : "♡"}
                </button>
 

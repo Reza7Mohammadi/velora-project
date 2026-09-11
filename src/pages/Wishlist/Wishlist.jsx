@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
-
 import products from "../../data/products";
 import ProductCard from "../../components/ProductCard/ProductCard";
-
 import "./Wishlist.css";
+import { useSelector } from "react-redux";
 
 
-const Wishlist = ({ wishlist, onWishlist,cart, onAddToCart, onIncreaseQuantity, onRemoveFromCart,onDecreaseQuantity }) => {
+const Wishlist = () => {
+
+
+  const wishlist = useSelector(state=>state.wishlist);
 
   const wishlistProducts = products.filter((product) =>
     wishlist.includes(product.id)
@@ -98,13 +100,6 @@ const Wishlist = ({ wishlist, onWishlist,cart, onAddToCart, onIncreaseQuantity, 
             <ProductCard
               key={product.id}
               product={product}
-              isWishlist={true}
-              onWishlist={onWishlist}
-              cart={cart}
-              onAddToCart={onAddToCart}
-              onIncreaseQuantity={onIncreaseQuantity}
-              onRemoveFromCart={onRemoveFromCart} 
-              onDecreaseQuantity={onDecreaseQuantity}
             />
 
           ))}

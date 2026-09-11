@@ -5,7 +5,7 @@ import { Link,useParams } from "react-router-dom";
 import "./Shop.css";
 
 
-const Shop = ({wishlist,onWishlist,cart, onAddToCart, onIncreaseQuantity, onRemoveFromCart,onDecreaseQuantity}) => {
+const Shop = () => {
   
 const {id} = useParams();
 
@@ -22,13 +22,6 @@ const {id} = useParams();
         <>
           <ProductCard 
           product={product} 
-          isWishlist={wishlist.includes(product.id)} 
-          onWishlist={onWishlist}
-          cart={cart}
-          onAddToCart={onAddToCart}
-          onIncreaseQuantity={onIncreaseQuantity}
-          onRemoveFromCart={onRemoveFromCart}
-          onDecreaseQuantity={onDecreaseQuantity}
           ></ProductCard>
           <Link to='/shop' />
         </>
@@ -161,13 +154,6 @@ const {id} = useParams();
           <ProductCard
             key={product.id}
             product={product}
-            isWishlist={wishlist.includes(product.id)}
-            onWishlist={onWishlist}
-            cart={cart}
-            onAddToCart={onAddToCart}
-            onIncreaseQuantity={onIncreaseQuantity}
-            onRemoveFromCart={onRemoveFromCart}
-            onDecreaseQuantity={onDecreaseQuantity}
           />
 
         ))}
