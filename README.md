@@ -2,11 +2,12 @@
 
 ### Modern Fashion E-Commerce Experience
 
-A modern, elegant, and fully responsive fashion e-commerce website built with **React 19**, **Vite**, and **React Router**.
+A modern, elegant, and fully responsive fashion e-commerce website built with **React 19**, **Vite**, **React Router**, and **Redux Toolkit**.
 
-Velora is designed as a premium fashion storefront with a clean editorial aesthetic, reusable React components, product browsing, collections, product details, shopping cart, wishlist, responsive navigation, and a mobile-first experience.
+Velora is designed as a premium fashion storefront with a clean editorial aesthetic, reusable React components, product browsing, collections, product details, shopping cart, wishlist, responsive navigation, centralized state management, persistent client-side data, and a mobile-first experience.
 
 > **Live Demo:**
+
 > https://reza7mohammadi.github.io/velora-project/
 
 ---
@@ -21,10 +22,12 @@ The project combines:
 * Responsive layouts
 * Reusable React components
 * Client-side routing
+* Centralized state management with Redux Toolkit
 * Product browsing and filtering
 * Product details
 * Shopping cart functionality
 * Wishlist functionality
+* Persistent cart and wishlist data
 * Dynamic navigation
 * Responsive mobile navigation
 * Interactive UI elements
@@ -36,7 +39,7 @@ The goal was to build a realistic fashion storefront rather than a simple static
 
 ## 🚀 Live Demo
 
-### [View Velora Live](https://reza7mohammadi.github.io/velora-project/)
+### [View Velora](https://reza7mohammadi.github.io/velora-project/)
 
 Explore the deployed version of the project on GitHub Pages.
 
@@ -148,6 +151,7 @@ The product details experience includes:
 * Product description
 * Product information
 * Add-to-cart functionality
+* Wishlist functionality
 * Navigation back to shopping
 * Responsive layout
 
@@ -157,18 +161,25 @@ React Router is used to provide dedicated URLs for individual products.
 
 ## 🛒 Shopping Cart
 
-Velora includes client-side shopping cart functionality.
+Velora includes client-side shopping cart functionality managed with **Redux Toolkit**.
 
 Users can:
 
 * Add products to the cart
 * View selected products
+* Increase product quantities
+* Decrease product quantities
+* Remove products from the cart
 * Track product quantities
 * See the total number of items
 * Navigate to the cart
 * Manage their shopping selection
 
-The navigation bar also displays a dynamic cart counter whenever the cart contains products.
+The cart state is stored centrally in the Redux store, making it accessible across different components and pages.
+
+The cart data is also persisted in **localStorage**, allowing the shopping cart to remain available after refreshing the page.
+
+The navigation bar displays a dynamic cart counter based on the Redux cart state.
 
 ---
 
@@ -176,7 +187,88 @@ The navigation bar also displays a dynamic cart counter whenever the cart contai
 
 The project includes a dedicated Wishlist page accessible directly from the navigation bar.
 
-The wishlist experience is integrated into the overall storefront navigation and provides a dedicated space for saved products.
+Wishlist state is managed using **Redux Toolkit** and is available across the application.
+
+Users can:
+
+* Add products to the wishlist
+* Remove products from the wishlist
+* View saved products
+* Access the wishlist from the navigation bar
+* Keep wishlist data after refreshing the page
+
+Wishlist data is persisted in **localStorage** through Redux middleware.
+
+---
+
+## ⚛️ Redux State Management
+
+Velora uses **Redux Toolkit** for centralized state management.
+
+The application currently manages:
+
+* Shopping cart state
+* Wishlist state
+
+The Redux store is configured using `configureStore`, while individual features are organized into separate slices.
+
+### Cart Slice
+
+The Cart slice manages:
+
+* Adding products
+* Removing products
+* Increasing quantity
+* Decreasing quantity
+
+### Wishlist Slice
+
+The Wishlist slice manages:
+
+* Adding products
+* Removing products
+
+This structure keeps state-related logic separated from UI components and makes the application easier to maintain and scale.
+
+---
+
+## 💾 Local Storage Persistence
+
+Velora uses `localStorage` to persist Cart and Wishlist data between page refreshes.
+
+A custom Redux middleware monitors Cart and Wishlist actions and automatically saves the updated state to localStorage.
+
+The application also reads previously saved data from localStorage when the Redux slices are initialized.
+
+### Persistence Flow
+
+```text
+User Interaction
+       ↓
+Redux Action
+       ↓
+Redux Reducer
+       ↓
+Updated Redux State
+       ↓
+Local Storage Middleware
+       ↓
+localStorage
+```
+
+On application startup:
+
+```text
+localStorage
+      ↓
+Redux Slice Initial State
+      ↓
+Redux Store
+      ↓
+React Components
+```
+
+This allows users to keep their cart and wishlist data after refreshing the page.
 
 ---
 
@@ -197,7 +289,7 @@ VELORA      HOME   SHOP   COLLECTIONS   ABOUT      ♡   🛍
 Below **900px**, the desktop navigation is replaced by a menu button.
 
 ```text
-VELORA                                  ☰
+VELORA                              ☰
 ```
 
 Clicking the menu button opens the mobile navigation.
@@ -284,6 +376,20 @@ Velora currently includes the following pages:
 * **React DOM**
 * **Vite**
 * **React Router DOM**
+* **Redux Toolkit**
+* **React Redux**
+
+### State Management
+
+* **Redux Toolkit**
+* Redux slices
+* Redux middleware
+* Centralized application state
+
+### Persistence
+
+* Browser `localStorage`
+* Custom Redux middleware for state persistence
 
 ### UI & Icons
 
@@ -302,10 +408,15 @@ Velora currently includes the following pages:
 
 # ⚛️ React Architecture
 
-The project follows a component-based architecture.
+The project follows a component-based architecture with feature-based Redux state management.
 
 ```text
 src/
+
+│
+├── app/
+│   ├── store.js
+│   └── localStorageMiddleware.js
 │
 ├── assets/
 │   ├── categories/
@@ -327,6 +438,12 @@ src/
 │   ├── categories.js
 │   └── products.js
 │
+├── features/
+│   ├── cart/
+│   │   └── cartSlice.js
+│   └── wishlist/
+│       └── wishlistSlice.js
+│
 ├── pages/
 │   ├── About/
 │   ├── Cart/
@@ -340,6 +457,12 @@ src/
 ├── index.css
 └── main.jsx
 ```
+
+The `app` directory contains the Redux store and application-level middleware.
+
+The `features` directory contains Redux slices organized by application feature.
+
+This structure keeps state management logic separated from UI components while allowing components to access the centralized Redux state when needed.
 
 ---
 
@@ -356,7 +479,7 @@ The application uses routes for:
 ├── /about
 ├── /wishlist
 ├── /cart
-└── /product/:id
+└── /shop/product/:id
 ```
 
 For GitHub Pages deployment, the application also uses:
@@ -378,6 +501,7 @@ Products and categories are separated from the UI components.
 
 ```text
 src/data/
+
 ├── products.js
 └── categories.js
 ```
@@ -576,6 +700,9 @@ Velora demonstrates practical frontend development concepts including:
 * 🛍️ E-commerce UI development
 * 🛒 Shopping cart functionality
 * ♡ Wishlist experience
+* ⚛️ Redux Toolkit state management
+* 🔄 Redux middleware
+* 💾 localStorage state persistence
 * 📱 Responsive design
 * ☰ Mobile navigation
 * 🎨 Design system consistency
