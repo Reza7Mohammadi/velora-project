@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import products from "../../data/products";
 import "./Products.css";
 
-const Products = ({wishlist,onWishlist,cart, onAddToCart, onIncreaseQuantity, onRemoveFromCart,onDecreaseQuantity}) => {
+const Products = () => {
 
   const featuredProducts = products.slice(0, 4);
 
@@ -31,13 +31,6 @@ const Products = ({wishlist,onWishlist,cart, onAddToCart, onIncreaseQuantity, on
           <ProductCard
             key={product.id}
             product={product}
-            isWishlist={wishlist.includes(product.id)}
-            onWishlist={onWishlist}
-            cart={cart}
-            onAddToCart={onAddToCart}
-            onIncreaseQuantity={onIncreaseQuantity}
-            onRemoveFromCart={onRemoveFromCart} 
-            onDecreaseQuantity={onDecreaseQuantity}
           />
         ))}           
 

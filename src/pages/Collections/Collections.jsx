@@ -4,7 +4,7 @@ import products from "../../data/products";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import "./Collections.css";
 
-const Collections = ({wishlist,onWishlist,cart, onAddToCart, onIncreaseQuantity, onRemoveFromCart,onDecreaseQuantity}) => {
+const Collections = () => {
 
   const { slug } = useParams();
   // ================================
@@ -133,13 +133,6 @@ const Collections = ({wishlist,onWishlist,cart, onAddToCart, onIncreaseQuantity,
             <ProductCard
               key={product.id}
               product={product} 
-              isWishlist={wishlist.includes(product.id)}
-              onWishlist={onWishlist}
-              cart={cart}
-              onAddToCart={onAddToCart}
-              onIncreaseQuantity={onIncreaseQuantity}
-              onRemoveFromCart={onRemoveFromCart} 
-              onDecreaseQuantity={onDecreaseQuantity}
             />
           ))}
         </div>

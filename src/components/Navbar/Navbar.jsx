@@ -2,8 +2,11 @@ import { useEffect, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { Menu, ShoppingBag, X } from "lucide-react";
 import "./Navbar.css";
+import { useSelector } from "react-redux";
 
-const Navbar = ({ cart }) => {
+const Navbar = () => {
+
+  const cart = useSelector(state=>state.cart.items);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const closeMenu = () => {

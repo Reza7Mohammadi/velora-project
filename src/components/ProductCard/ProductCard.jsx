@@ -1,20 +1,21 @@
 import { Link } from "react-router-dom";
 import "./ProductCard.css";
+import { useSelector ,useDispatch } from "react-redux";
+import { addToCart,removeFromCart,increaseQuantity,decreaseQuantity } from "../../features/cart/cartSlice";
+import { handleWishlist } from "../../features/wishlist/wishlistSlice";
 
 const ProductCard = ({
   product,
-  isWishlist,
-  onWishlist,
-  cart,
-  onAddToCart,
-  onIncreaseQuantity,
-  onRemoveFromCart,
-  onDecreaseQuantity
 }) => {
+
+  const cart = useSelector(state=>state.cart.items);
+  const dispatch =useDispatch();
 
   const cartItem = cart.find( (item) => item.id === product.id);
   const isInCart = !!cartItem;
 
+  const wishlist = useSelector(state=>state.wishlist);
+  const isWishlist = wishlist.includes(product.id)
 
   return (
     <article className="product-card">
@@ -48,7 +49,7 @@ const ProductCard = ({
         className={`product-wishlist ${
           isWishlist ? "is-wishlist" : ""
         }`}
-        onClick={() => onWishlist(product.id)}
+        onClick={() => dispatch(handleWishlist(product.id))}
         aria-label={
           isWishlist
             ? "Remove from wishlist"
@@ -93,7 +94,7 @@ const ProductCard = ({
 
   <button
     className="product-add"
-    onClick={() => onAddToCart(product.id)}
+    onClick={() => dispatch(addToCart(product))}
   >
     ADD TO BAG
 
@@ -111,7 +112,7 @@ const ProductCard = ({
       <button
         className="quantity-delete"
         onClick={() =>
-          onRemoveFromCart(product.id)
+          dispatch(removeFromCart(product.id))
         }
         aria-label="Remove from bag"
       >
@@ -123,7 +124,7 @@ const ProductCard = ({
       <button
         className="quantity-delete"
         onClick={() =>
-          onDecreaseQuantity(product.id)
+          dispatch(decreaseQuantity(product.id))
         }
         aria-label="Decrease quantity"
       >
@@ -141,7 +142,7 @@ const ProductCard = ({
     <button
       className="quantity-plus"
       onClick={() =>
-        onIncreaseQuantity(product.id)
+        dispatch(increaseQuantity(product.id))
       }
       aria-label="Increase quantity"
     >
